@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyNotificationManager</string>
+    <string name="groupId_001">groupId_001</string>
+    <string name="groupId_002">groupId_002</string>
+    <string name="channel_001">channel_001</string>
+    <string name="channel_002">channel_002</string>
+</resources>

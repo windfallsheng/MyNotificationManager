@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F6">
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/grid_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_centerInParent="true"
+        app:alignmentMode="alignBounds"
+        app:columnCount="2"
+        app:orientation="horizontal"
+        app:rowCount="5"
+        app:useDefaultMargins="false">
+
+        <TextView
+            android:id="@+id/textview_create"
+            style="@style/Text_Bg_Normal"
+            android:text="create"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/textview_defer"
+            style="@style/Text_Bg_Normal"
+            android:text="defer"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/textview_just"
+            style="@style/Text_Bg_Normal"
+            android:text="just"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/textview_fromiterable"
+            style="@style/Text_Bg_Normal"
+            android:text="fromIterable"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/textview_timer"
+            style="@style/Text_Bg_Normal"
+            android:text="timer"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/textview_fromarray"
+            style="@style/Text_Bg_Normal"
+            android:text="fromArray"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/textview_interval"
+            style="@style/Text_Bg_Normal"
+            android:text="interval"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/textview_intervalrange"
+            style="@style/Text_Bg_Normal"
+            android:text="intervalRange"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/textview_range"
+            style="@style/Text_Bg_Normal"
+            android:text="range"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+
+    </android.support.v7.widget.GridLayout>
+</RelativeLayout>
