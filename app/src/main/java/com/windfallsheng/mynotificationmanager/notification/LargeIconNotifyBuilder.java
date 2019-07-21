@@ -14,9 +14,6 @@ public class LargeIconNotifyBuilder extends BaseNotifyBuilder {
 
     public int largeIcon;
 
-    protected NotificationCompat.Builder notifyBuilder;
-
-
     public LargeIconNotifyBuilder(DefaultNotifyBuilder defaultBuilder) {
         super(defaultBuilder);
     }

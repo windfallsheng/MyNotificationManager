@@ -6,52 +6,47 @@ import android.support.v4.app.NotificationCompat;
 import com.windfallsheng.mynotificationmanager.R;
 
 /**
- * @author luzhaosheng
+ * @author lzsheng
  */
 
 public class DefaultNotifyBuilder {
 
-    public String mChannelId;
-    public int mSmallIcon = R.drawable.ic_launcher_foreground;
-    public CharSequence mContentTitle = "小蜗牛Tech";
-    public CharSequence mContentText;
-    public CharSequence mTicker = "小蜗牛Tech";
+    public String channelId;
+    public int smallIcon = R.drawable.ic_launcher_foreground;
+    public CharSequence contentTitle = "小蜗牛Tech";
+    public CharSequence contentText;
+    public CharSequence ticker;
     public int flag = NotificationCompat.FLAG_AUTO_CANCEL;
     public int priority = NotificationCompat.PRIORITY_HIGH;
-    public long mWhen = System.currentTimeMillis();
-    public PendingIntent mContentIntent;
+    public long when = System.currentTimeMillis();
+    public PendingIntent contentIntent;
+    public boolean autoCancel = true;
     public boolean sound;
     public boolean vibrate;
     public boolean lights;
 
-    public NotificationCompat.Builder getNotifyBuilder() {
-        return notifyBuilder;
-    }
-
-    protected NotificationCompat.Builder notifyBuilder;
-
     public DefaultNotifyBuilder(CharSequence contentText) {
-        this.mContentText = contentText;
+        this.contentText = contentText;
     }
 
     public DefaultNotifyBuilder(CharSequence contentTitle, CharSequence contentText) {
-        this.mContentTitle = contentTitle;
-        this.mContentText = contentText;
+        this.contentTitle = contentTitle;
+        this.contentText = contentText;
     }
 
     public DefaultNotifyBuilder(int smallIcon, CharSequence contentTitle, CharSequence contentText) {
-        this.mSmallIcon = smallIcon;
-        this.mContentTitle = contentTitle;
-        this.mContentText = contentText;
+        this.smallIcon = smallIcon;
+        this.contentTitle = contentTitle;
+        this.contentText = contentText;
     }
 
     public DefaultNotifyBuilder setChannelId(String channelId) {
-        this.mChannelId = channelId;
+        this.channelId = channelId;
         return this;
     }
 
     public DefaultNotifyBuilder setTicker(CharSequence ticker) {
-        this.mTicker = ticker;
+        this.ticker = ticker;
         return this;
     }
 
@@ -66,12 +61,17 @@ public class DefaultNotifyBuilder {
     }
 
     public DefaultNotifyBuilder setWhen(long when) {
-        this.mWhen = when;
+        this.when = when;
         return this;
     }
 
     public DefaultNotifyBuilder setContentIntent(PendingIntent contentIntent) {
-        this.mContentIntent = contentIntent;
+        this.contentIntent = contentIntent;
+        return this;
+    }
+
+    public DefaultNotifyBuilder setAutoCancel(boolean autoCancel) {
+        this.autoCancel = autoCancel;
         return this;
     }
 

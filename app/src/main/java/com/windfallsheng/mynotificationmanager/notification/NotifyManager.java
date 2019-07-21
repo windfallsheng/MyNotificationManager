@@ -21,6 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 封装通知栏实现，对于某些相关属性的处理逻辑，可根据具体的需求调整完善
  */
 public class NotifyManager {
+
     private static final String TAG = NotifyManager.class.getSimpleName();
     private static NotifyManager sInstance = null;
     private static NotificationManager mNotificationManager;

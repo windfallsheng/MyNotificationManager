@@ -9,9 +9,9 @@
     <android.support.v7.widget.GridLayout
         android:id="@+id/grid_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_margin="5dp"
         app:alignmentMode="alignBounds"
         app:columnCount="2"
         app:orientation="horizontal"
@@ -19,68 +19,18 @@
         app:useDefaultMargins="false">
 
         <TextView
-            android:id="@+id/textview_create"
+            android:id="@+id/textview_im_msg"
             style="@style/Text_Bg_Normal"
-            android:text="create"
+            android:text="im_msg"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
+           />
 
         <TextView
-            android:id="@+id/textview_defer"
+            android:id="@+id/textview_sys_msg"
             style="@style/Text_Bg_Normal"
-            android:text="defer"
+            android:text="sys_msg"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textview_just"
-            style="@style/Text_Bg_Normal"
-            android:text="just"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textview_fromiterable"
-            style="@style/Text_Bg_Normal"
-            android:text="fromIterable"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textview_timer"
-            style="@style/Text_Bg_Normal"
-            android:text="timer"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textview_fromarray"
-            style="@style/Text_Bg_Normal"
-            android:text="fromArray"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textview_interval"
-            style="@style/Text_Bg_Normal"
-            android:text="interval"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textview_intervalrange"
-            style="@style/Text_Bg_Normal"
-            android:text="intervalRange"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textview_range"
-            style="@style/Text_Bg_Normal"
-            android:text="range"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1" />
-
+          />
 
     </android.support.v7.widget.GridLayout>
 </RelativeLayout>

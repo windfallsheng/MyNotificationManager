@@ -4,14 +4,13 @@ import android.app.Notification;
 import android.content.Context;
 
 /**
- * @author luzhaosheng
+ * @author lzsheng
  */
 public class ProgressNotifyBuilder extends BaseNotifyBuilder {
 
     public int max;
     public int progress;
     public boolean interminate;
-
 
     public ProgressNotifyBuilder(DefaultNotifyBuilder defaultBuilder) {
         super(defaultBuilder);

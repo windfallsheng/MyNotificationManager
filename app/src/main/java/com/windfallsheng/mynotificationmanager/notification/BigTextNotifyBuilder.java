@@ -13,13 +13,6 @@ public class BigTextNotifyBuilder extends BaseNotifyBuilder{
     public String mBigText;
     public NotificationCompat.BigTextStyle mBigTextStyle;
 
-    public NotificationCompat.Builder getDefaultBuilder() {
-        return notifyBuilder;
-    }
-
-    protected NotificationCompat.Builder notifyBuilder;
-
-
     public BigTextNotifyBuilder(DefaultNotifyBuilder defaultBuilder) {
         super(defaultBuilder);
     }

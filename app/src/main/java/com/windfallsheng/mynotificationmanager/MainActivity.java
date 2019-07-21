@@ -11,167 +11,70 @@ import android.widget.TextView;
 import com.windfallsheng.mynotificationmanager.notification.DefaultNotifyBuilder;
 import com.windfallsheng.mynotificationmanager.notification.NotifyManager;
 
-import java.io.Serializable;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final String TAG = MainActivity.class.getSimpleName();
-
-    TextView tvCreate, tvDefer, tvJust, tvFromIterable, tvTimer, tvFromArray, tvInterval, tvIntervalRange, tvRange;
-    int countSys;
+    TextView tvImMsg, tvSysMsg;
+    private String userArray[] = {"Cyra", "Morgen", "Iris", "Mia"};
+    private String messageArray[] = {"我发表了新的美食文章", "我更新了我的相册", "我在FaceBook申请了账号", "我做了一个好看的小视频"};
+    private String sysMessageArray[] = {"有新的系统版本可以升级", "收到新的资讯内容", "为你推荐周边美食、娱乐活动", "最新最火爆的游戏"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvCreate = findViewById(R.id.textview_create);
-        tvDefer = findViewById(R.id.textview_defer);
-        tvJust = findViewById(R.id.textview_just);
-        tvFromIterable = findViewById(R.id.textview_fromiterable);
-        tvTimer = findViewById(R.id.textview_timer);
-        tvFromArray = findViewById(R.id.textview_fromarray);
-        tvInterval = findViewById(R.id.textview_interval);
-        tvIntervalRange = findViewById(R.id.textview_intervalrange);
-        tvRange = findViewById(R.id.textview_range);
+        tvImMsg = findViewById(R.id.textview_im_msg);
+        tvSysMsg = findViewById(R.id.textview_sys_msg);
 
-        tvCreate.setOnClickListener(this);
-        tvDefer.setOnClickListener(this);
-        tvJust.setOnClickListener(this);
-        tvFromIterable.setOnClickListener(this);
-        tvTimer.setOnClickListener(this);
-        tvFromArray.setOnClickListener(this);
-        tvInterval.setOnClickListener(this);
-        tvIntervalRange.setOnClickListener(this);
-        tvRange.setOnClickListener(this);
+        tvImMsg.setOnClickListener(this);
+        tvSysMsg.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.textview_create:
-                userAAAImMsg();
+            case R.id.textview_im_msg:
+                notifyImMessage();
                 break;
-            case R.id.textview_defer:
-                userBBBImMsg();
-                break;
-            case R.id.textview_just:
-                userCCCImMsg();
-                break;
-            case R.id.textview_fromiterable:
-                sysAAAMsg();
-                break;
-            case R.id.textview_timer:
-//                sysBBBMsg();
-                break;
-            case R.id.textview_fromarray:
-//                fromArray();
-                break;
-            case R.id.textview_interval:
-//                interval();
-                break;
-            case R.id.textview_intervalrange:
-//                intervalRange();
-                break;
-            case R.id.textview_range:
-//                range();
+            case R.id.textview_sys_msg:
+                notifySysMessage();
                 break;
             default:
                 break;
         }
     }
 
-    private void userAAAImMsg() {
-        Intent intent = new Intent(MainActivity.this, NotificationMsgActivity.class);
-        ;
-//        if (String.valueOf(com.icbc.constans.Constants.LOGISTICS_INFO_IM_ID).equals(chatId)) {
-//            intent = new Intent(mContext, LogisticsListActivity.class);
-//        } else if (String.valueOf(com.icbc.constans.Constants.SERVICE_MSG_IM_ID).equals(chatId)) {
-//            intent = new Intent(mContext, ServiceInfoListActivity.class);
-//        } else {
-//            intent = new Intent(mContext, ChatMessageListActivity.class);
-//            intent.putExtra(com.icbc.constans.Constants.FLAG_FROM_PAGE, com.icbc.constans.Constants.FLAG_FROM_CHAT_SESSION_LIST_ACTIVITY);
-//            intent.putExtra(com.icbc.constans.Constants.CHAT_INFO_ENTITY, (Serializable) chatInfoEntity);
-//        }
-//        LogUtils.d(TAG, "method:notifyReceivedMessage#notifyBuilder=" + notifyBuilder + ", intent=" + intent);
-        String key = "ImMessage#AAA";
+    private void notifyImMessage() {
+        int uIndex = (int) (Math.random() * userArray.length);
+        int mIndex = (int) (Math.random() * messageArray.length);
+        String userName = userArray[uIndex];
+        String content = messageArray[mIndex];
+        String key = "ImMessage#" + userName;
         int requestCode = NotifyManager.getInstance(MainActivity.this).initNotifyId(key);
         Log.d(TAG, "method:notifyReceivedMessage#key=" + key + ", requestCode=" + requestCode);
+        Intent intent = new Intent(MainActivity.this, NotificationMsgActivity.class);
+        intent.putExtra("msgContent", userName + ":\n\n" + content);
         PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        DefaultNotifyBuilder defaultNotifyBuilder = new DefaultNotifyBuilder("收到新的IM消息 from:" + key)
-                .setChannelId(getResources().getString(R.string.groupId_002))
+        DefaultNotifyBuilder defaultNotifyBuilder = new DefaultNotifyBuilder(userName, content)
+                .setChannelId(getResources().getString(R.string.channel_001))
                 .setContentIntent(pendingIntent);
         NotifyManager.getInstance(MainActivity.this).showDefaultNotification(key, defaultNotifyBuilder);
     }
 
-    private void userBBBImMsg() {
-        Intent intent = new Intent(MainActivity.this, NotificationMsgActivity.class);
-        ;
-//        if (String.valueOf(com.icbc.constans.Constants.LOGISTICS_INFO_IM_ID).equals(chatId)) {
-//            intent = new Intent(mContext, LogisticsListActivity.class);
-//        } else if (String.valueOf(com.icbc.constans.Constants.SERVICE_MSG_IM_ID).equals(chatId)) {
-//            intent = new Intent(mContext, ServiceInfoListActivity.class);
-//        } else {
-//            intent = new Intent(mContext, ChatMessageListActivity.class);
-//            intent.putExtra(com.icbc.constans.Constants.FLAG_FROM_PAGE, com.icbc.constans.Constants.FLAG_FROM_CHAT_SESSION_LIST_ACTIVITY);
-//            intent.putExtra(com.icbc.constans.Constants.CHAT_INFO_ENTITY, (Serializable) chatInfoEntity);
-//        }
-//        LogUtils.d(TAG, "method:notifyReceivedMessage#notifyBuilder=" + notifyBuilder + ", intent=" + intent);
-        String key = "ImMessage#BBB";
+    private void notifySysMessage() {
+        String key = "SysMessage#系统消息";
+        int mIndex = (int) (Math.random() * sysMessageArray.length);
+        String content = sysMessageArray[mIndex];
         int requestCode = NotifyManager.getInstance(MainActivity.this).initNotifyId(key);
         Log.d(TAG, "method:notifyReceivedMessage#key=" + key + ", requestCode=" + requestCode);
-        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        DefaultNotifyBuilder defaultNotifyBuilder = new DefaultNotifyBuilder("收到新的IM消息 from:" + key)
-                .setChannelId(getResources().getString(R.string.groupId_002))
-                .setContentIntent(pendingIntent);
-        NotifyManager.getInstance(MainActivity.this).showDefaultNotification(key, defaultNotifyBuilder);
-    }
-
-    private void userCCCImMsg() {
         Intent intent = new Intent(MainActivity.this, NotificationMsgActivity.class);
-        ;
-//        if (String.valueOf(com.icbc.constans.Constants.LOGISTICS_INFO_IM_ID).equals(chatId)) {
-//            intent = new Intent(mContext, LogisticsListActivity.class);
-//        } else if (String.valueOf(com.icbc.constans.Constants.SERVICE_MSG_IM_ID).equals(chatId)) {
-//            intent = new Intent(mContext, ServiceInfoListActivity.class);
-//        } else {
-//            intent = new Intent(mContext, ChatMessageListActivity.class);
-//            intent.putExtra(com.icbc.constans.Constants.FLAG_FROM_PAGE, com.icbc.constans.Constants.FLAG_FROM_CHAT_SESSION_LIST_ACTIVITY);
-//            intent.putExtra(com.icbc.constans.Constants.CHAT_INFO_ENTITY, (Serializable) chatInfoEntity);
-//        }
-//        LogUtils.d(TAG, "method:notifyReceivedMessage#notifyBuilder=" + notifyBuilder + ", intent=" + intent);
-        String key = "ImMessage#CCC";
-        int requestCode = NotifyManager.getInstance(MainActivity.this).initNotifyId(key);
-        Log.d(TAG, "method:notifyReceivedMessage#key=" + key + ", requestCode=" + requestCode);
+        intent.putExtra("msgContent", "系统消息" + ":\n\n" + content);
         PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        DefaultNotifyBuilder defaultNotifyBuilder = new DefaultNotifyBuilder("收到新的IM消息 from:" + key)
-                .setChannelId(getResources().getString(R.string.groupId_002))
-                .setContentIntent(pendingIntent);
-        NotifyManager.getInstance(MainActivity.this).showDefaultNotification(key, defaultNotifyBuilder);
-    }
-
-    private void sysAAAMsg() {
-        String key = "sysMessage#AAA";
-        Intent intent = new Intent(MainActivity.this, NotificationMsgActivity.class);
-        intent.putExtra("Msg", key + "_" + countSys++);
-//        if (String.valueOf(com.icbc.constans.Constants.LOGISTICS_INFO_IM_ID).equals(chatId)) {
-//            intent = new Intent(mContext, LogisticsListActivity.class);
-//        } else if (String.valueOf(com.icbc.constans.Constants.SERVICE_MSG_IM_ID).equals(chatId)) {
-//            intent = new Intent(mContext, ServiceInfoListActivity.class);
-//        } else {
-//            intent = new Intent(mContext, ChatMessageListActivity.class);
-//            intent.putExtra(com.icbc.constans.Constants.FLAG_FROM_PAGE, com.icbc.constans.Constants.FLAG_FROM_CHAT_SESSION_LIST_ACTIVITY);
-//            intent.putExtra(com.icbc.constans.Constants.CHAT_INFO_ENTITY, (Serializable) chatInfoEntity);
-//        }
-//        LogUtils.d(TAG, "method:notifyReceivedMessage#notifyBuilder=" + notifyBuilder + ", intent=" + intent);
-        int requestCode = NotifyManager.getInstance(MainActivity.this).initNotifyId(key);
-        Log.d(TAG, "method:notifyReceivedMessage#key=" + key + ", requestCode=" + requestCode);
-        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        DefaultNotifyBuilder defaultNotifyBuilder = new DefaultNotifyBuilder("收到新的IM消息 from:" + key)
-                .setChannelId(getResources().getString(R.string.groupId_002))
+        DefaultNotifyBuilder defaultNotifyBuilder = new DefaultNotifyBuilder("系统消息", content)
+                .setChannelId(getResources().getString(R.string.channel_002))
                 .setContentIntent(pendingIntent);
         NotifyManager.getInstance(MainActivity.this).showDefaultNotification(key, defaultNotifyBuilder);
     }
